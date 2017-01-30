@@ -3,8 +3,22 @@
 const express = require( 'express' );
 const app = express();
 
+if ( process.env.NODE_ENV !== 'production' ) {
+  require( 'dotenv' ).config();
+}
+
 const bodyParser = require( 'body-parser' )
 const morgan = require( 'morgan' );
+
+switch ( app.get( 'env' ) ) {
+  case 'development':
+    app.use( morgan( 'dev' ) );
+    break;
+
+  case 'production':
+    app.use( morgan( 'short' ) );
+    break;
+}
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( {
