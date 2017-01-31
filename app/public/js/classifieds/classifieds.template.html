@@ -1,0 +1,17 @@
+<div>
+
+</div>
+<div>
+  <form action="submit" method="post">
+
+  </form>
+</div>
+
+<div>
+  <div ng-repeat="ad in $ctrl.ads">
+    <h2>{{ad.title}}</h2>
+    <img ng-src="{{ad.item_image}}" alt="">
+    <p>Description: {{ad.description}}</p>
+    <p>Price: ${{ad.price}}</p>
+  </div>
+</div>

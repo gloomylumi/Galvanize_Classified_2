@@ -34,7 +34,7 @@ const messages = require( './routes/classifieds' );
 app.use( '/classifieds', messages );
 app.use( '*', function( req, res, next ) {
   res.sendFile( 'index.html', {
-    root: path.join( _dirname, 'public' )
+    root: path.join( __dirname, 'public' )
   } )
 } )
 
