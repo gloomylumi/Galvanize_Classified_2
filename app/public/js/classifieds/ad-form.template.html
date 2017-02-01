@@ -1,0 +1,7 @@
+<form name="ad-form"  ng-submit="$ctrl.{{formAction}}" action="submit" method="post" novalidate>
+  <input type="text" name="title" ng-model="$ctrl.adForm.title" required>
+  <input type="text" name="description" ng-model="$ctrl.adForm.description" required>
+  <input type="number" name="price" ng-model="$ctrl.adForm.price" required>
+  <input type="url" name="item-image" ng-model="$ctrl.adForm.item_image required">
+  <input type="submit" name="submit">
+</form>

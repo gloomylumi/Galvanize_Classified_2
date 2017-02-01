@@ -1,17 +1,17 @@
 <div>
-
+<!-- sorting menus and stuff -->
 </div>
 <div>
-  <form action="submit" method="post">
-
-  </form>
+  <a ui-sref="adList.newAd">New Ad</a>
 </div>
-
+<div ui-view></div>
 <div>
   <div ng-repeat="ad in $ctrl.ads">
     <h2>{{ad.title}}</h2>
     <img ng-src="{{ad.item_image}}" alt="">
     <p>Description: {{ad.description}}</p>
     <p>Price: ${{ad.price}}</p>
+    <a href="#" ng-click="$ctrl.deleteAd($event,ad)">Delete</a><a href="#" ng-click="$ctrl.editAd($event,ad)">Edit</a>
+    <hr>
   </div>
 </div>
