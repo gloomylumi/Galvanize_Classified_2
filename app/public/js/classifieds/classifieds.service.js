@@ -8,9 +8,9 @@
   function classifiedsService( $state, $http ) {
     this.getAllAds = getAllAds
     this.getAd = getAd
+    this.newAd = newAd
     this.deleteAd = deleteAd
     this.updateAd = updateAd
-    this.showForm = false;
 
     function getAllAds() {
       return $http.get( '/classifieds' ).then( response => {
@@ -36,8 +36,18 @@
         } )
     }
 
-    function updateAd() {
+    function updateAd( id, ad ) {
+      return $http.patch( `/classifieds/${id}`, ad )
+        .then( ( response ) => {
+          return $state.go( 'adList' )
+        } )
+    }
 
+    function newAd( ad ) {
+      return $http.post( '/classifieds', ad )
+        .then( ( response ) => {
+          return $state.go( 'adList' )
+        } )
     }
   }
 } )()
