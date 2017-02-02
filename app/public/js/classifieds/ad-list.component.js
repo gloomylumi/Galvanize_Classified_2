@@ -12,10 +12,9 @@
     const vm = this
 
     vm.$onInit = onInit
-    vm.ads = []
+    vm.ads = classifiedsService.ads
     vm.deleteAd = deleteAd
     vm.editAd = editAd
-    vm.toggleNewAdForm = toggleNewAdForm
 
     function onInit() {
       classifiedsService.getAllAds()
@@ -35,16 +34,14 @@
 
     function editAd( e, ad ) {
       e.preventDefault()
-    }
+      const id = ad.id
 
-    function toggleNewAdForm() {
-      // if ( classifiedsService.showForm ) {
-      //   classifiedsService.showForm = false;
-      // } else {
-      //   classifiedsService.showForm = true;
-      // }
+      $state.go( 'editAd', {
+        id: id
+      } )
 
     }
+
 
 
   }

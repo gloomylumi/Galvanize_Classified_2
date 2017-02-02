@@ -11,11 +11,14 @@
     this.newAd = newAd
     this.deleteAd = deleteAd
     this.updateAd = updateAd
+    this.ads = []
+    this.currentEdit = {}
+    var adsArray = this.ads
 
     function getAllAds() {
       return $http.get( '/classifieds' ).then( response => {
         const ads = response.data
-        console.log( ads );
+        adsArray = ads
         return ads
       } )
     }
@@ -24,6 +27,9 @@
       return $http.get( `/classifieds/${id}` )
         .then( ( response ) => {
           const ad = response.data
+          console.log( ad );
+          this.currentEdit = ad
+          console.log( this.currentEdit );
           return ad
         } )
     }
@@ -39,13 +45,19 @@
     function updateAd( id, ad ) {
       return $http.patch( `/classifieds/${id}`, ad )
         .then( ( response ) => {
-          return $state.go( 'adList' )
+          console.log();
+          return getAllAds()
+            .then( ( ads ) => {
+              this.ads = ads
+              return $state.go( 'adList' )
+            } )
         } )
     }
 
     function newAd( ad ) {
       return $http.post( '/classifieds', ad )
         .then( ( response ) => {
+          this.ads.push( response.data )
           return $state.go( 'adList' )
         } )
     }
