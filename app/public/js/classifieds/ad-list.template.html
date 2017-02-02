@@ -8,13 +8,14 @@
       <option value="price">Price - Low to High</option>
       <option value="-price">Price - High to Low</option>
     </select>
+    <input placeholder="🔎" ng-model="searchText">
   </div>
   <div>
     <a ui-sref="adList.newAd">New Ad</a>
   </div>
   <div ui-view></div>
   <div>
-    <div ng-repeat="ad in $ctrl.ads | orderBy : valueToSortBy">
+    <div ng-repeat="ad in $ctrl.ads | filter : searchText | orderBy : valueToSortBy">
       <div>
         <h2 style="display: inline;">{{ad.title}}</h2>
         <a href="#" ng-click="$ctrl.deleteAd($event,ad)" style="float: right;">❌</a>
@@ -25,7 +26,7 @@
           <a href="#" ng-click="$ctrl.editAd($event,ad)">Edit</a>
         </div>
         <div>
-          <p>Posted {{ad.created_at}}</p>
+          <p>Posted <span am-time-ago="ad.created_at"></span></p>
           <p>Description: {{ad.description}}</p>
           <p>Price: ${{ad.price}}</p>
         </div>
