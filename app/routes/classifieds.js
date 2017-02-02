@@ -5,7 +5,7 @@ const knex = require( '../knex' );
 const router = express.Router();
 
 router.get( '/', function( req, res, next ) {
-  knex.select( 'id', 'title', 'description', 'price', 'item_image' ).from( 'classifieds' )
+  knex( 'classifieds' )
     .orderBy( 'id' )
     .then( ( data ) => {
       res.send( data );
@@ -15,6 +15,19 @@ router.get( '/', function( req, res, next ) {
       next( err );
     } ) );
 } );
+
+// ORIGINAL ROUTE - DID NOT RETURN DATE
+// router.get( '/', function( req, res, next ) {
+//   knex.select( 'id', 'title', 'description', 'price', 'item_image' ).from( 'classifieds' )
+//     .orderBy( 'id' )
+//     .then( ( data ) => {
+//       res.send( data );
+//
+//     } )
+//     .catch( ( err => {
+//       next( err );
+//     } ) );
+// } );
 
 router.get( '/:id', function( req, res, next ) {
   const id = Number.parseInt( req.params.id );

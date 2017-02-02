@@ -20,7 +20,6 @@
       classifiedsService.getAllAds()
         .then( ads => {
           vm.ads = ads
-          console.log( vm.ads )
         } )
     }
 
@@ -35,7 +34,6 @@
     function editAd( e, ad ) {
       e.preventDefault()
       const id = ad.id
-
       $state.go( 'editAd', {
         id: id
       } )
