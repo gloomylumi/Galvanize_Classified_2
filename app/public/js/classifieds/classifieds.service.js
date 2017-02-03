@@ -12,7 +12,6 @@
     this.deleteAd = deleteAd
     this.updateAd = updateAd
     this.ads = []
-    this.currentEdit = {}
     var adsArray = this.ads
 
     function getAllAds() {
@@ -27,9 +26,6 @@
       return $http.get( `/classifieds/${id}` )
         .then( ( response ) => {
           const ad = response.data
-          console.log( ad );
-          this.currentEdit = ad
-          console.log( this.currentEdit );
           return ad
         } )
     }
@@ -37,15 +33,17 @@
     function deleteAd( id ) {
       return $http.delete( `/classifieds/${id}` )
         .then( ( response ) => {
-          const ad = response.data
-          return ad
+          return getAllAds()
+            .then( ( ads ) => {
+              this.ads = ads
+              return ads
+            } )
         } )
     }
 
     function updateAd( id, ad ) {
       return $http.patch( `/classifieds/${id}`, ad )
         .then( ( response ) => {
-          console.log();
           return getAllAds()
             .then( ( ads ) => {
               this.ads = ads

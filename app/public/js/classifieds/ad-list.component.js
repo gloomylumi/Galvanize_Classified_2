@@ -27,7 +27,7 @@
       e.preventDefault()
       const id = ad.id
       classifiedsService.deleteAd( id ).then( adResponse => {
-        return adResponse
+        return vm.ads = adResponse
       } )
     }
 
