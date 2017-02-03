@@ -3,8 +3,10 @@
   angular.module( 'app' )
     .component( 'adList', {
       templateUrl: 'js/classifieds/ad-list.template.html',
-      controller: controller
-
+      controller: controller,
+      bindings: {
+        ads: '<'
+      }
     } )
   controller.$inject = [ '$state', 'classifiedsService' ]
 

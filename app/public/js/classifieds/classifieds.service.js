@@ -55,8 +55,9 @@
     function newAd( ad ) {
       return $http.post( '/classifieds', ad )
         .then( ( response ) => {
+          $state.go( 'adList' )
           this.ads.push( response.data )
-          return $state.go( 'adList' )
+          return this.ads
         } )
     }
   }

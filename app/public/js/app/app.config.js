@@ -13,7 +13,12 @@
     $stateProvider
       .state( 'adList', {
         url: '/',
-        component: 'adList'
+        component: 'adList',
+        resolve: {
+          ads: function( classifiedsService ) {
+            return classifiedsService.ads
+          }
+        }
       } )
       .state( {
         name: 'editAd',
