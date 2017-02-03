@@ -27,7 +27,7 @@
       } )
       .state( {
         name: 'adList.newAd',
-        url: '/new-ad',
+        url: 'new-ad',
         component: 'adForm'
       } )
   }
