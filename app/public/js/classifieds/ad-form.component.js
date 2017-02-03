@@ -17,7 +17,6 @@
 
     function onInit() {
       if ( $state.$current.name === 'editAd' ) {
-        console.log( $state );
         const id = $state.params.id
         classifiedsService.getAd( id ).then( ( ad ) => {
           vm.adForm.title = ad.title
