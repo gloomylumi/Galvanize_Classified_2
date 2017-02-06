@@ -13,17 +13,10 @@
   function controller( $state, classifiedsService ) {
     const vm = this
 
-    vm.$onInit = onInit
     vm.ads = classifiedsService.ads
     vm.deleteAd = deleteAd
     vm.editAd = editAd
 
-    function onInit() {
-      classifiedsService.getAllAds()
-        .then( ads => {
-          vm.ads = ads
-        } )
-    }
 
     function deleteAd( e, ad ) {
       e.preventDefault()

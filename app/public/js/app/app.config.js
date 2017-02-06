@@ -16,7 +16,7 @@
         component: 'adList',
         resolve: {
           ads: function( classifiedsService ) {
-            return classifiedsService.ads
+            return classifiedsService.getAllAds()
           }
         }
       } )

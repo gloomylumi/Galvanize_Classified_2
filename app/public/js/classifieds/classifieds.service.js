@@ -17,7 +17,7 @@
     function getAllAds() {
       return $http.get( '/classifieds' ).then( response => {
         const ads = response.data
-        adsArray = ads
+        this.ads = ads
         return ads
       } )
     }
@@ -55,8 +55,8 @@
     function newAd( ad ) {
       return $http.post( '/classifieds', ad )
         .then( ( response ) => {
-          $state.go( 'adList' )
           this.ads.push( response.data )
+          $state.go( 'adList' )
           return this.ads
         } )
     }
